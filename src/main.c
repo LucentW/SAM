@@ -14,7 +14,7 @@
 
 
 // Approximations of some Windows functions to ease portability
-#if defined __GNU_LIBRARY__ || defined __GLIBC__
+#ifndef _WIN32
 static int min(int l, int r) { return l < r ? l : r; }
 static void strcat_s(char * dest, int size, char * str) {
     unsigned int dlen = strlen(dest);

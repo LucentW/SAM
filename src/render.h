@@ -14,4 +14,6 @@ unsigned char CreateTransitions();
 #define RISING_INFLECTION (1)
 #define FALLING_INFLECTION (255)
 
+#define BUFFER_SIZE 22050 * 10
+
 #endif

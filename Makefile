@@ -6,8 +6,8 @@ CC = gcc
 #LFLAGS = `sdl-config --libs`
 
 # no libsdl present
-CFLAGS = -Werror -O2
-# DEBUG: CFLAGS = -Werror -ggdb
+# CFLAGS = -Werror -O2
+CFLAGS = -Werror -ggdb
 LFLAGS = 
 
 sam: $(OBJS)
