@@ -72,7 +72,12 @@ void PrintUsage()
 	printf("	-speed number		set speed value (default=72)\n");
 	printf("	-throat number		set throat value (default=128)\n");
 	printf("	-mouth number		set mouth value (default=128)\n");
+#ifdef USESDL
 	printf("	-wav filename		output to wav instead of libsdl\n");
+#else
+	printf("	-wav filename		specify filename for the wav output\n");
+	printf("	             		(defaults to output.wav)\n");
+#endif
 	printf("	-sing			special treatment of pitch\n");
 	printf("	-debug			print additional debug messages\n");
 	printf("\n");
@@ -272,7 +277,10 @@ int main(int argc, char **argv)
 	if (wavfilename != NULL) 
 		WriteWav(wavfilename, GetBuffer(), GetBufferLength()/50);
 	else
+#ifdef USESDL
 		OutputSound();
-
+#else
+		WriteWav("output.wav", GetBuffer(), GetBufferLength()/50);
+#endif
 	return 0;
 }

@@ -67,8 +67,13 @@ void Output(int index, unsigned char A)
 	bufferpos += timetable[oldtimetableindex][index];
 	oldtimetableindex = index;
 	// write a little bit in advance
-	for(k=0; k<5; k++)
+	for(k=0; k<5; k++) {
+		// HACK: realloc the buffer to avoid an overflow in case the index goes over the default size
+		// we actually need to fix what actually has length of a sample go over 30 seconds
+		if((bufferpos/50 + k) > 22050*30)
+			buffer = realloc(buffer, (22050*10)+(bufferpos/50+k));
 		buffer[bufferpos/50 + k] = (A & 15)*16;
+	}
 }
 
 

@@ -1,14 +1,14 @@
 OBJS = reciter.o sam.o render.o main.o debug.o processframes.o createtransitions.o
-
 CC = gcc
 
 # libsdl present
-CFLAGS =  -Wall -O2 -DUSESDL `sdl-config --cflags`
-LFLAGS = `sdl-config --libs`
+#CFLAGS = -Wall -O2 -DUSESDL `sdl-config --cflags`
+#LFLAGS = `sdl-config --libs`
 
 # no libsdl present
-#CFLAGS =  -Wall -O2
-#LFLAGS = 
+CFLAGS = -Werror -O2
+# DEBUG: CFLAGS = -Werror -ggdb
+LFLAGS = 
 
 sam: $(OBJS)
 	$(CC) -o sam $(OBJS) $(LFLAGS)
@@ -21,3 +21,4 @@ package:
 
 clean:
 	rm *.o
+	rm sam
