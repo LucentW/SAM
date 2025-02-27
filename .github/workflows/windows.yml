@@ -1,0 +1,22 @@
+name: Windows Build
+
+on:
+  push:
+    branches: ['master']
+
+jobs:
+  windows:
+    name: Execute build
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ilammy/msvc-dev-cmd@v1.4.1
+    - name: compile
+      run: | 
+        cl src\reciter.c src\sam.c src\render.c src\main.c src\debug.c src\processframes.c src\createtransitions.c /Fe:sam.exe
+    - name: Upload executable
+      uses: actions/upload-artifact@v2
+      with:
+        name: windows
+        path: |
+          sam.exe
