@@ -15,7 +15,7 @@ jobs:
       run: | 
         cl src\reciter.c src\sam.c src\render.c src\main.c src\debug.c src\processframes.c src\createtransitions.c /Fe:sam.exe
     - name: Upload executable
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: windows
         path: |
